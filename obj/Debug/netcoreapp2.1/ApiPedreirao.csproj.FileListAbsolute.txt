@@ -1,0 +1,14 @@
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/bin/Debug/netcoreapp2.1/ApiPedreirao.deps.json
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/bin/Debug/netcoreapp2.1/ApiPedreirao.runtimeconfig.json
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/bin/Debug/netcoreapp2.1/ApiPedreirao.runtimeconfig.dev.json
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/bin/Debug/netcoreapp2.1/ApiPedreirao.dll
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/bin/Debug/netcoreapp2.1/ApiPedreirao.pdb
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.csprojAssemblyReference.cache
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.csproj.CoreCompileInputs.cache
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.RazorAssemblyInfo.cache
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.RazorAssemblyInfo.cs
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.AssemblyInfoInputs.cache
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.AssemblyInfo.cs
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.RazorTargetAssemblyInfo.cache
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.dll
+/home/landim/ProjPedreiraoAPI/ApiPedreirao/obj/Debug/netcoreapp2.1/ApiPedreirao.pdb
