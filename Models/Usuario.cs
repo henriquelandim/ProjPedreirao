@@ -33,7 +33,7 @@ namespace ApiPedreirao.Models
         public string TipoUsuario { get; set; }
         [Required(ErrorMessage = "É preciso inserir o sexo,'M' para masculino, 'F' para feminino, 'O' para prefiro não informar")]
         [StringLength(1)]
-        public char Sexo { get; set; }
+        public string Sexo { get; set; }
         [StringLength(15)]
         public string Telefone { get; set; }
         [Required]

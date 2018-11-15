@@ -7,10 +7,10 @@ namespace ApiPedreirao.Data
 {
     public class InicializarBanco
     {
-        public static void Iniciar(APContexto contex)
+        public static void Iniciar(APContexto contexto)
         {
-            contex.Database.EnsureCreated();
-            if (contex.Usuario.Any())
+            contexto.Database.EnsureCreated();
+            if (contexto.Usuario.Any())
             {
                 return;
             }
@@ -23,10 +23,10 @@ namespace ApiPedreirao.Data
                 Email = "anaclaracardosopinheiro@outlook.com.br",
                 Telefone = "11988326738",
                 CPF = "51241895485",
-                //DataNascimento = DateTime.Parse("2018-06-08") ,
-                Sexo = 'F',
-                Endereco = "Rua Carapanã, 33 - Jardim Santa Terezinha (Zona Leste) São Paulo - SP",
-                TipoUsuario = "Cliente",
+                DataNascimento = DateTime.Parse("2018-06-08") ,
+                Sexo = "F",
+                Endereco = "Rua Carapanã",
+                TipoUsuario = "C",
                 Especialidade = "Pedreira",
                 Especialidade2 = "Azulegista",
                 Especialidade3 = "Gesseira",
@@ -34,7 +34,7 @@ namespace ApiPedreirao.Data
                 RazaoSocial = "AnaClara LTDA"
 
             };
-            contex.Usuario.Add(usuario);
+            contexto.Usuario.Add(usuario);
 
             var perfil = new Perfil()
             {
@@ -46,16 +46,15 @@ namespace ApiPedreirao.Data
                 FotoPort4 = "1",
                 FotoPort5 = "1"
             };
-            contex.Perfil.Add(perfil);
+            contexto.Perfil.Add(perfil);
             var formaPagamento = new FormaPagamento()
             {
-                Teste = "teste",
             };
-            contex.FormaPagamento.Add(formaPagamento);
+            contexto.FormaPagamento.Add(formaPagamento);
             var fechaNegocio = new FechaNegocio()
             {
-                Categoria = "",
-                DescServ ="", 
+                Categoria = "uma",
+                DescServ ="umamamamamamamama", 
                 Preco = 580.54,
                 IdFormaDPag = formaPagamento.Id,
                 IdUsuarioC = usuario.Id,
@@ -63,8 +62,8 @@ namespace ApiPedreirao.Data
                 
 
             };
-            contex.FechaNegocio.Add(fechaNegocio);
-            contex.SaveChanges();
+            contexto.FechaNegocio.Add(fechaNegocio);
+            contexto.SaveChanges();
             
 
         }

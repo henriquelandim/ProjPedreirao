@@ -20,7 +20,7 @@ namespace ApiPedreirao.Data
 
 
             /*  Relacionamento tabela Perfil */
-            mb.Entity<Perfil>().ToTable("Perfil").HasKey(pe => pe.Id);
+          mb.Entity<Perfil>().ToTable("Perfil").HasKey(pe => pe.Id);
 
             mb.Entity<Perfil>().ToTable("Perfil")
             .HasOne<Usuario>(us => us.Usuario)
@@ -30,7 +30,7 @@ namespace ApiPedreirao.Data
 
             /* Relacionamento tabela FechaNegocio*/
 
-            mb.Entity<FechaNegocio>().ToTable("FechaNegocio").HasKey(fh => fh.Id);
+           mb.Entity<FechaNegocio>().ToTable("FechaNegocio").HasKey(fh => fh.Id);
 
 
             mb.Entity<FechaNegocio>().ToTable("FechaNegocio")
@@ -49,7 +49,7 @@ namespace ApiPedreirao.Data
             .HasForeignKey(fne => fne.IdFormaDPag);
 
             /*  Relacionamento tabela Servico */
-            mb.Entity<Servico>().ToTable("Servico").HasKey(se => se.Id);
+           mb.Entity<Servico>().ToTable("Servico").HasKey(se => se.Id);
             mb.Entity<Servico>().ToTable("Servico")
             .HasOne<Usuario>(us => us.Usuario)
             .WithMany(se => se.Servico)

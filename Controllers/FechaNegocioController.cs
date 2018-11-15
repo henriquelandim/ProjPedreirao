@@ -11,29 +11,29 @@ namespace ApiPedreirao.Controllers
     public class FechaNegocioController : Controller
     {
         FechaNegocio fn = new FechaNegocio();
-        readonly APContexto apc;
-        public FechaNegocioController(APContexto apc)
+        readonly APContexto contexto;
+        public FechaNegocioController(APContexto contexto)
         {
-            this.apc = apc;
+            this.contexto = contexto;
         }
-        [Authorize("Bearer", Roles = "")]
+        [Authorize("Bearer", Roles = "Cliente")]
         [HttpGet]
         public IEnumerable<FechaNegocio> Listar()
         {
-            return apc.FechaNegocio.ToList();
+            return contexto.FechaNegocio.ToList();
         }
         [HttpGet("{id}")]
         public FechaNegocio Listar(int id)
         {
-            return apc.FechaNegocio.Where(y => y.Id == id).FirstOrDefault();
+            return contexto.FechaNegocio.Where(y => y.Id == id).FirstOrDefault();
         }
         [HttpPost]
         public IActionResult Registrar([FromBody] FechaNegocio fechaNegocio)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Dados Invalido, Não foi possivel cadastrar");
-            apc.FechaNegocio.Add(fechaNegocio);
-            int rs = apc.SaveChanges();
+            contexto.FechaNegocio.Add(fechaNegocio);
+            int rs = contexto.SaveChanges();
             if (rs < 1)
                 return BadRequest("Houve uma falha interna e não foi possivel registrar.");
             else
@@ -44,13 +44,13 @@ namespace ApiPedreirao.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest("NÃO foi possivel enviar os dados");
-            var fne = apc.FechaNegocio.Where(y => y.Id == id).FirstOrDefault();
+            var fne = contexto.FechaNegocio.Where(y => y.Id == id).FirstOrDefault();
 
             fne.Categoria = fechaNegocio.Categoria;
             fne.DescServ = fechaNegocio.DescServ;
             fne.Preco = fechaNegocio.Preco;
             fne.FormaPagamento = fechaNegocio.FormaPagamento;
-            int rs = apc.SaveChanges();
+            int rs = contexto.SaveChanges();
             if(rs <1)
                 return BadRequest("Houve uma falha interna e não foi possivel cadastrar");
             else
@@ -60,12 +60,12 @@ namespace ApiPedreirao.Controllers
         public IActionResult Apagar(int id)
         {
 
-            var fne = apc.FechaNegocio.Where(x => x.Id == id).FirstOrDefault();
+            var fne = contexto.FechaNegocio.Where(x => x.Id == id).FirstOrDefault();
             if (fne == null)
                 return BadRequest("Cliente não localizado");
 
-            apc.FechaNegocio.Remove(fne);
-            int rs = apc.SaveChanges();
+            contexto.FechaNegocio.Remove(fne);
+            int rs = contexto.SaveChanges();
 
             if (rs > 0)
                 return Ok();

@@ -13,21 +13,22 @@ namespace ApiPedreirao.Controllers
     public class UsuarioController : Controller
     {
         Usuario usu = new Usuario();
-        readonly APContexto apc;
-        public UsuarioController(APContexto apc)
+        readonly APContexto contexto;
+        public UsuarioController(APContexto contexto)
         {
-            this.apc = apc;
+            this.contexto = contexto;
         }
-        [Authorize("Bearer", Roles = "Usuario")]
+        // [Authorize("Bearer", Roles = "Cliente")]
+
         [HttpGet]
         public IEnumerable<Usuario> Listar()
         {
-            return apc.Usuario.ToList();
+            return contexto.Usuario.ToList();
         }
         [HttpGet("{id}")]
         public Usuario Listar(int id)
         {
-            return apc.Usuario.Where(x => x.Id == id).FirstOrDefault();
+            return contexto.Usuario.Where(x => x.Id == id).FirstOrDefault();
         }
         [HttpPost]
         public IActionResult Registrar([FromBody] Usuario usuario)
@@ -37,9 +38,9 @@ namespace ApiPedreirao.Controllers
 
             Seguranca sg = new Seguranca();
             usuario.Senha = sg.encriptografar(usuario.Senha);
-            
-            apc.Usuario.Add(usuario);
-            int res = apc.SaveChanges();
+
+            contexto.Usuario.Add(usuario);
+            int res = contexto.SaveChanges();
             if (res < 1)
                 return BadRequest("Houve uma falha interna e não foi possivel cadastrar");
             else
@@ -51,7 +52,7 @@ namespace ApiPedreirao.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("não foi possivel enviar os dados para atualizar");
 
-            var us = apc.Usuario.Where(y => y.Id == id).FirstOrDefault();
+            var us = contexto.Usuario.Where(y => y.Id == id).FirstOrDefault();
 
             /*#####################################################################################
                ATENÇÃO!! 
@@ -76,8 +77,8 @@ namespace ApiPedreirao.Controllers
             us.Especialidade2 = usuario.Especialidade2;
             us.Especialidade3 = usuario.Especialidade3;
 
-            apc.Usuario.Update(us);
-            int rs = apc.SaveChanges();
+            contexto.Usuario.Update(us);
+            int rs = contexto.SaveChanges();
             if (rs < 1)
                 return BadRequest("Hoube uma falha interna e não foi possivel cadastrar");
             else
@@ -88,12 +89,12 @@ namespace ApiPedreirao.Controllers
         [HttpDelete("{id}")]
         public IActionResult Excluir(int id)
         {
-            var us = apc.Usuario.Where(y => y.Id == id).FirstOrDefault();
+            var us = contexto.Usuario.Where(y => y.Id == id).FirstOrDefault();
             if (us == null)
                 return BadRequest("Usuario não encontrado.");
 
-            apc.Usuario.Remove(us);
-            int rs = apc.SaveChanges();
+            contexto.Usuario.Remove(us);
+            int rs = contexto.SaveChanges();
             if (rs > 0)
                 return Ok();
             else
